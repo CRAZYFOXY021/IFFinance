@@ -35,10 +35,11 @@ header nav ul {
 header nav ul li a {
     color: white;
     text-decoration: none;
-    padding: 32px 20px ;
+    padding: 32px 20px;
 }
 
-header nav ul li a:hover, .active {
+header nav ul li a:hover,
+.active {
     background-color: rgb(27, 26, 26);
     color: #ec7b11;
     border-bottom: 3px solid #ec7b11
@@ -58,6 +59,58 @@ main {
     width: 100%;
     min-height: calc(100vh - 210px);
 }
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 18vw;
+    height: 18vh;
+    background-color: rgb(82, 77, 77);
+    border-radius: 10px;
+    border: 2px solid whitesmoke;
+}
+
+.card .top {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: auto;
+    height: 60px;
+    
+}
+
+.card .start {
+    background-color: rgb(7, 129, 7);
+    width: 35%;
+    border-radius: 2px;
+}
+
+.card .end {
+    background-color: rgb(189, 14, 14);
+    width: 35%;
+    border-radius: 2px;
+}
+
+.card .content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.card .bottom {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+
+.card p {
+    margin: 0;
+    font-size: 20px;
+    text-align: center;
+}
+
 
 footer {
     height: 120px;
