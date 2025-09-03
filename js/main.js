@@ -14,7 +14,7 @@ function addTicker(event) {
     const bolsa = event.target.bolsa.value
     const valor = event.target.valor.value
     const ativos = event.target.ativos.value
-    console.log(ticker, bolsa, valor, ativos)
+    console.log(bolsa)
     const total = valor * ativos
 
     const card = `
@@ -32,4 +32,7 @@ function addTicker(event) {
             </div>
         </div>
 `
+    const cards = document.getElementById("cards")
+    cards.innerHTML += card
+    closeModal()
 }
