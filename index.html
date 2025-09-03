@@ -6,6 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <link rel="stylesheet" href="./css/style.css">
+        <script>
+            let nome = "Vitor"; // let pode ser alterada
+            const rua = "IFSP"; // const não pode ser alterada
+
+            console.log(nome);
+            console.log(rua);
+        </script>
     </head>
 
     <body>
@@ -20,6 +27,7 @@
                         <li><a href="index.html" class="active ">Home</a></li>
                         <li><a href="about.html">Quem Somos</a></li>
                         <li><a href="services.html">Contato</a></li>
+                        <button onclick="openModal()">Adicionar</button>
                     </ul>
                 </nav>
             </div>
@@ -28,24 +36,90 @@
         <div class="wrapper">
             <div class="flexrow">
                 <main>
+                    <div id="cards">
+                        <div class="card">
+                            <div class="top">
+                                <h2><b>Nasdaq</b></h2>
+                                <h2>
+                                    <p>NYSE</p>
+                                </h2>
+                            </div>
 
-                    <div class="card">
-                        <div class="top">
-                            <h2 class="start"><b>U$235,00</b></h2>
-                            <h2 class="end"><b>U$35,00</b></h2>
+                            <div class="content">
+                                <p>U$2.500</p>
+                                <div class="bottom">
+                                    <p>Ativos: 10</p>
+                                    <p>Posição: 2.350</p>
+                                </div>
+                            </div>
                         </div>
+                        <div class="card">
+                            <div class="top">
+                                <h2><b>Nasdaq</b></h2>
+                                <h2>
+                                    <p>NYSE</p>
+                                </h2>
+                            </div>
 
-                        <div class="content">
-                            <p style="width: 100%;">APPL - GOOL - MSFT</p>
-                            <p style="width: 100%;">Nasdaq . NYSE</p>
-                            <div class="bottom">
-                                <p>Ativos: 10</p>
-                                <p>Posição: 2.350</p>
+                            <div class="content">
+                                <p>U$2.500</p>
+                                <div class="bottom">
+                                    <p>Ativos: 10</p>
+                                    <p>Posição: 2.350</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="top">
+                                <h2><b>Nasdaq</b></h2>
+                                <h2>
+                                    <p>NYSE</p>
+                                </h2>
+                            </div>
+
+                            <div class="content">
+                                <p>U$2.500</p>
+                                <div class="bottom">
+                                    <p>Ativos: 10</p>
+                                    <p>Posição: 2.350</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="top">
+                                <h2><b>Nasdaq</b></h2>
+                                <h2>
+                                    <p>NYSE</p>
+                                </h2>
+                            </div>
+
+                            <div class="content">
+                                <p>U$2.500</p>
+                                <div class="bottom">
+                                    <p>Ativos: 10</p>
+                                    <p>Posição: 2.350</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="top">
+                                <h2><b>Nasdaq</b></h2>
+                                <h2>
+                                    <p>NYSE</p>
+                                </h2>
+                            </div>
+
+                            <div class="content">
+                                <p>U$2.500</p>
+                                <div class="bottom">
+                                    <p>Ativos: 10</p>
+                                    <p>Posição: 2.350</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-
                 </main>
+
             </div>
         </div>
 
@@ -54,7 +128,34 @@
 
             </div>
         </footer>
+        <div class="modal">
+            <main>
+
+                <h1>Cadastrar</h1>
+                <form onsubmit="addTicker(event)">
+                    <label for="ticker">Ticker</label>
+                    <input type="text" id="ticker" name="ticker" placeholder="Digite o ticker">
+
+                    <label for="bolsa">Bolsa</label>
+                    <select id="bolsa" name="bolsa">
+                        <option value="Nasdaq">Nasdaq</option>
+                        <option value="NYSE">NYSE</option>
+                    </select>
+                    <input type="text" id="bolsa" name="bolsa" placeholder="Digite a bolsa">
+
+                    <label for="valor">Valor</label>
+                    <input type="text" id="valor" name="valor" placeholder="Digite o valor">
+
+                    <label for="ativos">Ativos</label>
+                    <input type="text" id="ativos" name="ativos" placeholder="Digite a quantidade de ativos">
+
+                    <input type="submit" value="Cadastrar">
+                    <button type="button" onclick="closeModal()">Fechar</button>
+                </form>
+            </main>
+        </div>
 
     </body>
+    <script src="./js/main.js"></script>
 
 </html>

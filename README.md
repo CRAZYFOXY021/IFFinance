@@ -34,3 +34,5 @@
 - git config --global user.name "Renan Cavichi"
 - git config --global user.email "renancavichi@gmail.com"
 - git init (inicia o git em um projeto ou pasta)
+
+## JavaScript
