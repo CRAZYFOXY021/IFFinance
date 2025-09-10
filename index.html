@@ -1,164 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css" />
-    <script></script>
-  </head>
 
-  <body>
-    <header>
-      <div class="wrapper" style="height: 90px">
-        <div class="flexrow" style="height: 90px">
-          <img src="img/logo.svg" />
-          <h1><span style="color: #ec7b11">IF</span>Finance</h1>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="./css/style.css" />
+        <script></script>
+    </head>
+
+    <body>
+        <header>
+            <div class="wrapper" style="height: 90px">
+                <div class="flexrow" style="height: 90px">
+                    <img src="img/logo.svg" />
+                    <h1><span style="color: #ec7b11">IF</span>Finance</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li>
+                            <span><a href="about.html">Quem Somos</a></span>
+                        </li>
+                        <li><a href="services.html">Contato</a></li>
+                        <button onclick="openModal('#add')">Adicionar</button>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="wrapper">
+            <div class="flexrow">
+                <main>
+                    <div id="cards">
+                        <div class="card" onmouseenter="showButtons(event)" onmouseleave="hideButtons(event)">
+                            <!--adiciona os eventos onmouseenter e onmouseleave para chamar as funcoes showButtons e hideButtons ao passar o mouse sobre o card-->
+                            <div class="top">
+                                <h2>
+                                    <p>Nasdaq</p>
+                                </h2>
+                                <h2>
+                                    <p>NYSE</p>
+                                </h2>
+                            </div>
+
+                            <div class="content">
+                                <p>U$2.500</p>
+                                <div class="bottom">
+                                    <p>Ativos: 10</p>
+                                    <p><span>U$ 2.350</p>
+                                </div>
+                            </div>
+                            <div class="buttons">
+                                <button type="button">Editar</button>
+                                <button type="button"
+                                    onclick="deleteCard(event)">Excluir</button><!--adiciona o evento onclick para chamar a funcao deleteCard ao clicar no botao-->
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
         </div>
-        <nav>
-          <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li>
-              <span><a href="about.html">Quem Somos</a></span>
-            </li>
-            <li><a href="services.html">Contato</a></li>
-            <button onclick="openModal()">Adicionar</button>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <div class="wrapper">
-      <div class="flexrow">
-        <main>
-          <div id="cards">
-            <div class="card">
-              <div class="top">
-                <h2>Nasdaq</h2>
-                <h2>
-                  <p>NYSE</p>
-                </h2>
-              </div>
 
-              <div class="content">
-                <p>U$2.500</p>
-                <div class="bottom">
-                  <p>Ativos: 10</p>
-                  <p>U$ 2.350</p>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="top">
-                <h2>Nasdaq</h2>
-                <h2>
-                  <p>NYSE</p>
-                </h2>
-              </div>
+        <footer>
+            <div class="wrapper" style="height: 120px"></div>
+        </footer>
+        <div class="modal" id="add">
+            <main>
+                <h1>Cadastrar</h1>
+                <form onsubmit="addTicker(event)" autocomplete="off">
+                    <!--adiciona o evento onsubmit para chamar a funcao addTicker ao enviar o formulario-->
+                    <label for="ticker">Ticker</label>
+                    <input type="text" id="ticker" name="ticker" placeholder="Digite o  nome do ticker" />
 
-              <div class="content">
-                <p>U$2.500</p>
-                <div class="bottom">
-                  <p>Ativos: 10</p>
-                  <p>U$ 2.350</p>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="top">
-                <h2>Nasdaq</h2>
-                <h2>
-                  <p>NYSE</p>
-                </h2>
-              </div>
+                    <label for="bolsa">Bolsa</label>
+                    <select id="bolsa" name="bolsa">
+                        <option value="" selected disabled>Selecione uma bolsa</option>
+                        <option value="Nasdaq">Nasdaq</option>
+                        <option value="NYSE">NYSE</option>
+                    </select>
 
-              <div class="content">
-                <p>U$2.500</p>
-                <div class="bottom">
-                  <p>Ativos: 10</p>
-                  <p>U$ 2.350</p>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="top">
-                <h2>Nasdaq</h2>
-                <h2>
-                  <p>NYSE</p>
-                </h2>
-              </div>
+                    <label for="valor">Valor</label>
+                    <input type="text" id="valor" name="valor" placeholder="Digite o valor" />
 
-              <div class="content">
-                <p>U$2.500</p>
-                <div class="bottom">
-                  <p>Ativos: 10</p>
-                  <p>U$ 2.350</p>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="top">
-                <h2>Nasdaq</h2>
-                <h2>
-                  <p>NYSE</p>
-                </h2>
-              </div>
+                    <label for="ativos">Ativos</label>
+                    <input type="text" id="ativos" name="ativos" placeholder="Digite a quantidade de ativos" />
 
-              <div class="content">
-                <p>U$2.500</p>
-                <div class="bottom">
-                  <p>Ativos: 10</p>
-                  <p>U$ 2.350</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>
-    </div>
+                    <input type="submit" value="Cadastrar" />
+                    <button type="button" onclick="closeModal('#add')">Fechar</button>
+                </form>
+            </main>
+        </div>
+        <!-- Modal Editar-->
+        <div class="modal" id="edit">
+            <main>
+                <h1>Editar</h1>
+                <form onsubmit="addTicker(event)" autocomplete="off">
+                    <!--adiciona o evento onsubmit para chamar a funcao addTicker ao enviar o formulario-->
+                    <label for="ticker">Ticker</label>
+                    <input type="text" id="editticker" name="ticker" placeholder="Digite o  nome do ticker" />
+                    <label for="bolsa">Bolsa</label>
+                    <select id="editbolsa" name="bolsa">
+                        <option value="" selected disabled>Selecione uma bolsa</option>
+                        <option value="Nasdaq">Nasdaq</option>
+                        <option value="NYSE">NYSE</option>
+                    </select>
 
-    <footer>
-      <div class="wrapper" style="height: 120px"></div>
-    </footer>
-    <div class="modal">
-      <main>
-        <h1>Cadastrar</h1>
-        <form onsubmit="addTicker(event)" autocomplete="off">
-          <label for="ticker">Ticker</label>
-          <input
-            type="text"
-            id="ticker"
-            name="ticker"
-            placeholder="Digite o  nome do ticker"
-          />
+                    <label for="valor">Valor</label>
+                    <input type="text" id="editvalor" name="valor" placeholder="Digite o valor" />
 
-          <label for="bolsa">Bolsa</label>
-          <select id="bolsa" name="bolsa">
-            <option value="" selected disabled>Selecione uma bolsa</option>
-            <option value="Nasdaq">Nasdaq</option>
-            <option value="NYSE">NYSE</option>
-          </select>
+                    <label for="ativos">Ativos</label>
+                    <input type="text" id="editativos" name="ativos" placeholder="Digite a quantidade de ativos" />
 
-          <label for="valor">Valor</label>
-          <input
-            type="text"
-            id="valor"
-            name="valor"
-            placeholder="Digite o valor"
-          />
+                    <input type="submit" value="Editar" onclick="openEditCard(event)" />
+                    <button type="button" onclick="closeModal('#edit')">Fechar</button>
+                </form>
+            </main>
+        </div>
+    </body>
+    <script src="./js/main.js"></script>
 
-          <label for="ativos">Ativos</label>
-          <input
-            type="text"
-            id="ativos"
-            name="ativos"
-            placeholder="Digite a quantidade de ativos"
-          />
-
-          <input type="submit" value="Cadastrar" />
-          <button type="button" onclick="closeModal()">Fechar</button>
-        </form>
-      </main>
-    </div>
-  </body>
-  <script src="./js/main.js"></script>
 </html>
