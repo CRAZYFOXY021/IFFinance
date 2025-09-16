@@ -3,7 +3,7 @@ function openModal(modalId) {
     modal.style.display = "flex"
 }
 
-function closeModal() {
+function closeModal(modalId) {
     const modal = document.querySelector(modalId)/*seleciona a classe modal (ocultação da classe)*/
     modal.style.display = "none"
 }
@@ -25,7 +25,7 @@ function addTicker(event) {
             </div>
 
             <div class="content">
-                <p>U$${valor}</p>
+                <p>U$<p>${valor}</p></p>
                 <div class="bottom">
                     <p>Ativos:${ativos}</p>
                     <p>Posição: ${total}</p>
@@ -37,12 +37,65 @@ function addTicker(event) {
             </div>
         </div>
 `
+
     const cards = document.getElementById("cards")
     cards.innerHTML += card/*adiciona o card criado dentro da div com id cards*/
     closeModal('#add')
     event.target.reset()/*reseta o formulario apos o envio*/
 }
 
+function editTicker(event) {
+    event.preventDefault()
+}
+
+
+
+function editTicker(event) {
+    event.preventDefault()
+
+    const idcard = event.target.idcard.value
+    const ticker = event.target.editticker.value
+    const bolsa = event.target.editbolsa.value
+    const valor = event.target.editvalor.value
+    const ativos = event.target.editativos.value
+
+    const total = valor * ativos
+
+    const cardEdit = document.getElementById(idcard)
+    console.log(cardEdit)
+
+    const h2ticker = cardEdit.querySelector('.top h2')
+    h2ticker.innerText = ticker
+
+    closeModal('#edit')
+}
+
+function openEditCard(event) {
+    const buttonEdit = event.target
+    const card = buttonEdit.closest(".card")
+
+    const ticker = card.querySelector('.top h2').innerText
+    const inputEditTicker = document.getElementById('editticker')
+    inputEditTicker.value = ticker
+
+    const inputIdCard = document.getElementById('idcard')
+    inputIdCard.value = ticker
+
+    const bolsa = card.querySelector('.top h2 p').innerText
+    const selectEditBolsa = document.getElementById('editbolsa')
+    const option = selectEditBolsa.querySelector(`option[value=${bolsa}]`)
+    option.setAttribute('selected', 'true')
+
+    const valor = card.querySelector('.content p ').innerText
+    const inputEditValor = document.getElementById('editvalor')
+    inputEditValor.value = valor
+
+    const ativos = card.querySelector('.bottom p ').innerText
+    const inputEditAtivos = document.getElementById('editativos')
+    inputEditAtivos.value = ativos
+
+    openModal('#edit')
+}
 
 function showButtons(event) {
     const card = event.target /*pega o elemento que disparou o evento*/
@@ -58,16 +111,7 @@ function hideButtons(event) {
 }
 
 function deleteCard(event) {
-    const card = event.target.closest(".card")/*pega o elemento que disparou o evento, e procura pelo ancestral mais proximo com a classe card*/
-    card.remove()/*remove o card*/
-}
-
-function openEditCard(event) {
-    const buttonedit = event.target
-    const card = buttonedit.closest(".card")
-    const ticker = card.querySelector(".top h2 p").innerText
-    const inputeditticker = document.getElementById("editticker")
-    inputeditticker.value = ticker
-    openModal('#edit')
-
+    const buttonDelete = event.target
+    const card = buttonDelete.closest(".card")
+    card.remove()
 }

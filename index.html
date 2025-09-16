@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <div class="buttons">
-                                <button type="button">Editar</button>
+                                <button type="button" onclick="openEditCard(event)">Editar</button>
                                 <button type="button"
                                     onclick="deleteCard(event)">Excluir</button><!--adiciona o evento onclick para chamar a funcao deleteCard ao clicar no botao-->
                             </div>
@@ -91,12 +91,13 @@
                 </form>
             </main>
         </div>
+
         <!-- Modal Editar-->
         <div class="modal" id="edit">
             <main>
                 <h1>Editar</h1>
-                <form onsubmit="addTicker(event)" autocomplete="off">
-                    <!--adiciona o evento onsubmit para chamar a funcao addTicker ao enviar o formulario-->
+                <form onsubmit="editTicker(event)" autocomplete="off"><!--adiciona o evento onsubmit para chamar a funcao addTicker ao enviar o formulario-->
+                    <input type="hidden" id="idcard" name="idcard">
                     <label for="ticker">Ticker</label>
                     <input type="text" id="editticker" name="ticker" placeholder="Digite o  nome do ticker" />
                     <label for="bolsa">Bolsa</label>
@@ -112,7 +113,7 @@
                     <label for="ativos">Ativos</label>
                     <input type="text" id="editativos" name="ativos" placeholder="Digite a quantidade de ativos" />
 
-                    <input type="submit" value="Editar" onclick="openEditCard(event)" />
+                    <input type="submit" value="Editar" onclick="openModal('#edit')" />
                     <button type="button" onclick="closeModal('#edit')">Fechar</button>
                 </form>
             </main>
