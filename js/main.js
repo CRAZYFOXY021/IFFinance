@@ -21,14 +21,14 @@ function addTicker(event) {
         <div class="card" onmouseenter="showButtons(event)" onmouseleave="hideButtons(event)">
             <div class="top">
                 <h2><p>${ticker}</p></h2>
-                <h2><p>NYSE</p></h2>
+                <h2><p>${bolsa}</p></h2>
             </div>
 
             <div class="content">
-                <p>U$<p>${valor}</p></p>
+                <p>U$<span>${valor}<span></p>
                 <div class="bottom">
                     <p>Ativos:${ativos}</p>
-                    <p>Posição: ${total}</p>
+                    <p>Posição:<span> ${total}</span></p>
                 </div>
                 <div class="buttons">
                     <button type="button">Editar</button>
@@ -62,10 +62,21 @@ function editTicker(event) {
     const total = valor * ativos
 
     const cardEdit = document.getElementById(idcard)
-    console.log(cardEdit)
 
-    const h2ticker = cardEdit.querySelector('.top h2')
-    h2ticker.innerText = ticker
+    const h2Ticker = cardEdit.querySelector('.top .ticker p')
+    h2Ticker.innerText = ticker
+
+    const h3Bolsa = cardEdit.querySelector('.top .bolsa p')
+    h3Bolsa.innerText = bolsa
+
+    const pValor = cardEdit.querySelector('.content p span')
+    pValor.innerText = valor
+
+    const pAtivos = cardEdit.querySelector('.bottom p')
+    pAtivos.innerText = ativos
+
+    const spanTotal = cardEdit.querySelector('.bottom p span')
+    spanTotal.innerText = total
 
     closeModal('#edit')
 }
@@ -73,24 +84,26 @@ function editTicker(event) {
 function openEditCard(event) {
     const buttonEdit = event.target
     const card = buttonEdit.closest(".card")
+    console.log(card)
 
-    const ticker = card.querySelector('.top h2').innerText
+    const ticker = card.querySelector('.top .ticker p').innerText
     const inputEditTicker = document.getElementById('editticker')
     inputEditTicker.value = ticker
 
+    const idCard = card.getAttribute('id')/*pega o atributo id do card*/
+    //cardStock.setAttribute("teste", "123") //Exemplo de setAttribute para adicionar um atributo em um elemento
     const inputIdCard = document.getElementById('idcard')
-    inputIdCard.value = ticker
+    inputIdCard.value = idCard
 
-    const bolsa = card.querySelector('.top h2 p').innerText
+    const bolsa = card.querySelector('.top .bolsa p').innerText
     const selectEditBolsa = document.getElementById('editbolsa')
-    const option = selectEditBolsa.querySelector(`option[value=${bolsa}]`)
-    option.setAttribute('selected', 'true')
+    selectEditBolsa.value = bolsa
 
-    const valor = card.querySelector('.content p ').innerText
+    const valor = card.querySelector('.content p span ').innerText
     const inputEditValor = document.getElementById('editvalor')
     inputEditValor.value = valor
 
-    const ativos = card.querySelector('.bottom p ').innerText
+    const ativos = card.querySelector('.bottom p span ').innerText
     const inputEditAtivos = document.getElementById('editativos')
     inputEditAtivos.value = ativos
 

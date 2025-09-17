@@ -20,9 +20,9 @@
                     <ul>
                         <li><a href="index.html" class="active">Home</a></li>
                         <li>
-                            <span><a href="about.html">Quem Somos</a></span>
+                            <span><a href="quem-somos.html" class="active">Quem Somos</a></span>
                         </li>
-                        <li><a href="services.html">Contato</a></li>
+                        <li><a href="contato.html">Contato</a></li>
                         <button onclick="openModal('#add')">Adicionar</button>
                     </ul>
                 </nav>
@@ -33,22 +33,22 @@
             <div class="flexrow">
                 <main>
                     <div id="cards">
-                        <div class="card" onmouseenter="showButtons(event)" onmouseleave="hideButtons(event)">
+                        <div class="card" id="APPL" onmouseenter="showButtons(event)" onmouseleave="hideButtons(event)">
                             <!--adiciona os eventos onmouseenter e onmouseleave para chamar as funcoes showButtons e hideButtons ao passar o mouse sobre o card-->
                             <div class="top">
-                                <h2>
-                                    <p>Nasdaq</p>
+                                <h2 class="ticker">
+                                    <p>APPL</p>
                                 </h2>
-                                <h2>
+                                <h2 class="bolsa">
                                     <p>NYSE</p>
                                 </h2>
                             </div>
 
                             <div class="content">
-                                <p>U$2.500</p>
+                                <p>U$<span>2.500<span></p>
                                 <div class="bottom">
                                     <p>Ativos: 10</p>
-                                    <p><span>U$ 2.350</p>
+                                    <p>U$ <span>2.350</span></p>
                                 </div>
                             </div>
                             <div class="buttons">
@@ -91,13 +91,13 @@
                 </form>
             </main>
         </div>
-
         <!-- Modal Editar-->
         <div class="modal" id="edit">
             <main>
                 <h1>Editar</h1>
-                <form onsubmit="editTicker(event)" autocomplete="off"><!--adiciona o evento onsubmit para chamar a funcao addTicker ao enviar o formulario-->
+                <form onsubmit="editTicker(event)" autocomplete="off">
                     <input type="hidden" id="idcard" name="idcard">
+                    <!--adiciona o evento onsubmit para chamar a funcao addTicker ao enviar o formulario-->
                     <label for="ticker">Ticker</label>
                     <input type="text" id="editticker" name="ticker" placeholder="Digite o  nome do ticker" />
                     <label for="bolsa">Bolsa</label>
@@ -113,7 +113,7 @@
                     <label for="ativos">Ativos</label>
                     <input type="text" id="editativos" name="ativos" placeholder="Digite a quantidade de ativos" />
 
-                    <input type="submit" value="Editar" onclick="openModal('#edit')" />
+                    <input type="submit" value="Editar" />
                     <button type="button" onclick="closeModal('#edit')">Fechar</button>
                 </form>
             </main>
